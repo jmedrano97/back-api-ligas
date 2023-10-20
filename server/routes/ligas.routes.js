@@ -11,7 +11,7 @@ import {
 
 router.get('/ligas', getLigas);
 router.get('/liga/:id_liga', getOneLiga);
-router.post('/ligas', createLiga);
+router.post('/liga', createLiga);
 router.delete('/liga/:id_liga', deleteLiga);
 router.put('/liga/:id_liga', updateLiga);
 
