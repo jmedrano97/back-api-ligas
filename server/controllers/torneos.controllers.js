@@ -73,3 +73,13 @@ export const deleteTorneo = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getTorneosByLiga = async (req, res, next) => {
+  try {
+    const idLiga = req.params.id_liga;
+    const [torneos] = await pool.query('SELECT * FROM torneos WHERE id_liga = ?', [idLiga]);
+    res.json(torneos);
+  } catch (error) {
+    next(error);
+  }
+};

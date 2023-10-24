@@ -9,11 +9,11 @@ import {
   updateCompetencia
 } from "../controllers/competencias.controllers.js";
 
-router.get('/competencias', getCompetencias);
-router.get('/competencia/:id_competencia', getOneCompetencia);
-router.post('/competencia', createCompetencia);
-router.delete('/competencia/:id_competencia', deleteCompetencia);
-router.put('/competencia/:id_competencia', updateCompetencia);
+router.get('/api/v1/competencias', getCompetencias);
+router.get('/api/v1/competencia/:id_competencia', getOneCompetencia);
+router.post('/api/v1/competencia', createCompetencia);
+router.delete('/api/v1/competencia/:id_competencia', deleteCompetencia);
+router.put('/api/v1/competencia/:id_competencia', updateCompetencia);
 
 export default router;
 

@@ -9,10 +9,10 @@ import {
   updateEquipo
 } from "../controllers/equipos.controllers.js";
 
-router.get('/equipos', getEquipos);
-router.get('/equipo/:id_equipo', getOneEquipo);
-router.post('/equipo', createEquipo);
-router.delete('/equipo/:id_equipo', deleteEquipo);
-router.put('/equipo/:id_equipo', updateEquipo);
+router.get('/api/v1/equipos', getEquipos);
+router.get('/api/v1/equipo/:id_equipo', getOneEquipo);
+router.post('/api/v1/equipo', createEquipo);
+router.delete('/api/v1/equipo/:id_equipo', deleteEquipo);
+router.put('/api/v1/equipo/:id_equipo', updateEquipo);
 
 export default router;

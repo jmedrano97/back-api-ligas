@@ -9,11 +9,11 @@ import {
     updateLiga
 } from "../controllers/ligas.controllers.js";
 
-router.get('/ligas', getLigas);
-router.get('/liga/:id_liga', getOneLiga);
-router.post('/liga', createLiga);
-router.delete('/liga/:id_liga', deleteLiga);
-router.put('/liga/:id_liga', updateLiga);
+router.get('/api/v1/ligas', getLigas);
+router.get('/api/v1/liga/:id_liga', getOneLiga);
+router.post('/api/v1/liga', createLiga);
+router.delete('/api/v1/liga/:id_liga', deleteLiga);
+router.put('/api/v1/liga/:id_liga', updateLiga);
 
 
 
