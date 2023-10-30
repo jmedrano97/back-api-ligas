@@ -9,4 +9,4 @@ export const pool = createPool({
 });
 
 // docker ps
-// docker run -it --rm --link nombre_del_contenedor:mysql mysql:latest mysql -h mysql -u root -p
+// docker run -it --rm --link mymysql:mysql mysql:latest mysql -h mysql -u root -p
