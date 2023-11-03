@@ -5,18 +5,16 @@ import {errorHandler} from './errorHandler.js';
 
 import indexRoutes from './routes/index.routes.js'
 import leaguesRoutes from './routes/leagues.routes.js'
-import torneosRoutes from './routes/torneos.routes.js'
-import competenciasRoutes from './routes/competencias.routes.js'
-import equiposRoutes from './routes/equipos.routes.js'
+import competitionsRoutes from './routes/competitions.routes.js'
+import teamsRoutes from './routes/teams.routes.js'
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(indexRoutes);
 app.use(leaguesRoutes);
-app.use(torneosRoutes);
-app.use(competenciasRoutes);
-app.use(equiposRoutes);
+app.use(competitionsRoutes);
+app.use(teamsRoutes);
 
 
 app.use(errorHandler);
