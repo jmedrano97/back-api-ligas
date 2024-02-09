@@ -30,11 +30,38 @@ export const getOneLeague = async (req, res, next) => {
   }
 };
 
+// Obtener una sola liga por ID
+export const getLeagueByLink = async (req, res, next) => {
+  try {
+    const [result] = await pool.query("SELECT * FROM leagues WHERE league_link = ?", [
+      req.params.league_link,
+    ]);
+
+    if (result.length === 0) {
+      const notFoundError = new Error('League not found');
+      notFoundError.status = 404;
+      next(notFoundError);
+      return;
+    }
+
+    res.json(result[0]);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Crear una nueva liga
 export const createLeague = async (req, res, next) => {
   try {
-    const { name, description } = req.body;
-    const [result] = await pool.query('INSERT INTO leagues (name, description) VALUES (?, ?)', [name, description]);
+    const { name, description,league_link,img } = req.body;
+    const [result] = await pool.query("INSERT INTO leagues SET ?", [
+      {
+        name,
+        description,
+        league_link,
+        img,
+      },
+    ]);
     res.json({ message: "League created", league_id: result.insertId, name, description });
   } catch (error) {
     next(error);
