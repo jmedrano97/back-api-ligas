@@ -10,6 +10,17 @@ export const getTeams = async (req, res, next) => {
   }
 };
 
+// Obtener equipos por ID de liga
+export const getTeamsByLeague = async (req, res, next) => {
+  try {
+    const leagueId = req.params.league_id;
+    const [teams] = await pool.query('SELECT * FROM teams WHERE league_id = ?', [leagueId]);
+    res.json(teams);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Obtener un equipo por su ID
 export const getOneTeam = async (req, res, next) => {
   try {
@@ -74,13 +85,4 @@ export const deleteTeam = async (req, res, next) => {
   }
 };
 
-// Obtener equipos por ID de liga
-export const getTeamsByLeague = async (req, res, next) => {
-  try {
-    const leagueId = req.params.league_id;
-    const [teams] = await pool.query('SELECT * FROM teams WHERE league_id = ?', [leagueId]);
-    res.json(teams);
-  } catch (error) {
-    next(error);
-  }
-};
+

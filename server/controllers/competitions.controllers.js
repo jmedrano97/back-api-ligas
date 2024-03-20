@@ -10,6 +10,30 @@ export const getCompetitions = async (req, res, next) => {
   }
 };
 
+export const getCompetitionsByLeague = async (req, res, next) => {
+  try {
+    const [result] = await pool.query(`
+    SELECT c.*,tc.name as typeOfCompetitions_name FROM competitions c
+    INNER JOIN typeOfCompetitions tc on tc.typeOfCompetition_id = c.typeOfCompetition_id
+    WHERE c.league_id = ?`, [
+          req.params.league_id,
+        ]);
+
+    if (result.length === 0) {
+      const notFoundError = new Error('Competitions not found');
+      notFoundError.status = 404;
+      next(notFoundError);
+      return;
+    }
+
+    const response = genericResponse( result, 'Competitions by league');
+    res.json(response);
+
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Obtener una competencia por su ID
 export const getOneCompetition = async (req, res, next) => {
   try {
@@ -73,3 +97,13 @@ export const deleteCompetition = async (req, res, next) => {
     next(error);
   }
 };
+
+const genericResponse = (result,message) => {
+  const respuesta = {
+    status: 200,
+    data: result,
+    message: message,
+  };
+  return respuesta;
+};
+
